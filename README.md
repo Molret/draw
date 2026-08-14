@@ -48,6 +48,7 @@ is closed.
 | Redo | `Ctrl+Y` or `Ctrl+Shift+Z` | `Command+Shift+Z` |
 | Copy | `Ctrl+C` | `Command+C` |
 | Paste | `Ctrl+V` | `Command+V` |
+| Delete selected object | `Delete` or `Backspace` | `Delete` or `Backspace` |
 
 ## Storage and privacy
 

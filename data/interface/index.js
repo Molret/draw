@@ -354,9 +354,15 @@ var config  = {
     "remove": {
       "active": {
         "objects": function () {
-          config.draw.canvas.getActiveObjects().forEach(function (object) {
+          if (!config.draw.canvas) return;
+          const objects = config.draw.canvas.getActiveObjects();
+          if (!objects.length) return;
+          objects.forEach(function (object) {
             config.draw.canvas.remove(object);
           });
+          config.draw.canvas.discardActiveObject();
+          config.draw.canvas.requestRenderAll();
+          config.listeners.object.updated();
         }
       }
     },
@@ -843,7 +849,13 @@ var config  = {
         else config.draw.undo();
       }
       if (modifier && code === 86) {e.preventDefault(); config.draw.paste();}
-      if (code === 46) config.draw.remove.active.objects();
+      if (code === 8 || code === 46) {
+        const hasSelection = config.draw.canvas && config.draw.canvas.getActiveObjects().length > 0;
+        if (hasSelection) {
+          e.preventDefault();
+          config.draw.remove.active.objects();
+        }
+      }
       if (arrow) config.draw.action.move(code, e.shiftKey);
       if (code === 188 || code === 190) config.draw.action.resize(code);
       if (code === 219 || code === 221) config.draw.action.rotate(code);
