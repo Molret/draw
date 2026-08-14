@@ -285,7 +285,13 @@ var config  = {
               config.draw.anchor.button.setAttribute("aria-pressed", String(config.draw.anchor.enabled));
               config.draw.anchor.button.title = config.draw.anchor.enabled ? "Keep drawings fixed to the page" : "Keep drawings fixed to the viewport";
             }
+          }).catch(function () {
+            config.draw.history = [config.draw.snapshot()];
+            config.draw.historyIndex = 0;
           });
+        } else {
+          config.draw.history = [config.draw.snapshot()];
+          config.draw.historyIndex = 0;
         }
       } else {
         config.draw.history = [config.draw.snapshot()];
@@ -303,6 +309,7 @@ var config  = {
     "theme": {},
     "history": [],
     "historyIndex": -1,
+    "historyLimit": 100,
     "historyTimeout": null,
     "restoring": false,
     "storageKey": "last.draw",
@@ -419,7 +426,7 @@ var config  = {
       if (config.draw.historyIndex >= 0 && config.draw.history[config.draw.historyIndex] === screen) return;
       config.draw.history = config.draw.history.slice(0, config.draw.historyIndex + 1);
       config.draw.history.push(screen);
-      if (config.draw.history.length > 100) config.draw.history.shift();
+      if (config.draw.history.length > config.draw.historyLimit) config.draw.history.shift();
       config.draw.historyIndex = config.draw.history.length - 1;
     },
     "restoreHistory": function (index) {
@@ -434,6 +441,8 @@ var config  = {
           config.draw.canvas.setViewportTransform([1, 0, 0, 1, x, y]);
         }
         config.draw.canvas.renderAll();
+        config.draw.restoring = false;
+      }).catch(function () {
         config.draw.restoring = false;
       });
     },
