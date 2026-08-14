@@ -219,6 +219,15 @@ body {
 .controls .button #clear {background: url('icons/Clear.png') no-repeat center center}
 .controls .button #remove {background: url('icons/Remove.png') no-repeat center center}
 .controls .button #theme-dark {background: url('icons/Dark.png') no-repeat center center}
+.controls .button #anchor {
+  font-size: 16px;
+  line-height: 38px;
+}
+.controls .button #anchor::before {content: '\2693'}
+.controls .button #anchor[aria-pressed='true'] {
+  opacity: 1;
+  background-color: rgba(0, 117, 255, 0.15);
+}
 .controls .button #zoom-in {background: url('icons/Zoom-in.png') no-repeat center center}
 .controls .button #zoom-out {background: url('icons/Zoom-out.png') no-repeat center center}
 
