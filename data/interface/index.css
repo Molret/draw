@@ -8,6 +8,11 @@ html {
   overflow: hidden;
 }
 
+html[context='page'],
+html[context='page'] body {
+  background: transparent !important;
+}
+
 body {
   margin: 0;
   border: 0;
@@ -403,6 +408,12 @@ html[context='page'] .toolbar {
 
 html[context='page'] .controls {
   border: solid 1px var(--theme-color);
+}
+
+html[context='page'] .canvas-container,
+html[context='page'] .canvas-container canvas,
+html[context='page'] #draw-on-page-canvas {
+  background: transparent !important;
 }
 
 html[context='webapp'] .toolbar {

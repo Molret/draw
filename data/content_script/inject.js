@@ -49,6 +49,7 @@ if (!background) {
       "show": function () {
         config.iframe = document.createElement("iframe");
         config.iframe.setAttribute("class", "draw-on-page-parent-iframe");
+        config.iframe.setAttribute("allowtransparency", "true");
         config.iframe.src = chrome.runtime.getURL("data/interface/index.html?page&url=" + encodeURIComponent(window.location.href));
         /*  */
         config.iframe.style.top = "0";
@@ -62,6 +63,7 @@ if (!background) {
         config.iframe.style.position = "fixed";
         config.iframe.style.zIndex = "2147483647";
         config.iframe.style.background = "transparent";
+        config.iframe.style.backgroundColor = "transparent";
         /*  */
         document.documentElement.appendChild(config.iframe);
         /* Keep the extension canvas informed about the host page viewport. The
