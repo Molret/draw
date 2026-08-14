@@ -27,6 +27,17 @@ In page mode, use the anchor button when annotations should remain attached to
 the document instead of the viewport. This is especially useful for PDFs,
 quizzes, and long step-by-step procedures.
 
+When the anchor is enabled, mouse-wheel scrolling is forwarded to the host page
+and the drawings follow their document positions. To work with form controls,
+save the drawing, close the overlay with **Close**, complete the form, and
+reopen the extension; the saved anchored drawing will be restored at the same
+page positions.
+
+The drawing surface is an extension overlay above the page while drawing is
+active. This keeps annotations isolated from the website, but it also means
+that page controls directly underneath cannot receive clicks until the overlay
+is closed.
+
 ## Keyboard shortcuts
 
 | Action | Windows/Linux | macOS |
