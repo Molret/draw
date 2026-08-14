@@ -8,7 +8,12 @@
     "_execute_action": {}
   },
   "background": {
-    "scripts": ["background.js"],
+    "scripts": [
+      "lib/config.js",
+      "lib/chrome.js",
+      "lib/runtime.js",
+      "lib/common.js"
+    ],
     "service_worker": "background.js"
   },
   "web_accessible_resources": [{
