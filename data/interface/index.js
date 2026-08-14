@@ -218,7 +218,8 @@ var config  = {
       config.draw.background.color.value = config.storage.read("background.color") !== undefined ? config.storage.read("background.color") : "#ffffff";
       config.draw.brushing.controls.display = config.storage.read("controls.display") !== undefined ? config.storage.read("controls.display") : "block";
       config.draw.storageKey = config.port.name === "page" ? config.page.storageKey : "last.draw";
-      config.draw.anchor.enabled = config.port.name === "page" && config.storage.read("anchor.enabled") === true;
+      const anchorPreference = config.storage.read("anchor.enabled");
+      config.draw.anchor.enabled = config.port.name === "page" && anchorPreference === true;
       config.draw.shape.selector.setAttribute("selected", config.storage.read("shape.selector") !== undefined ? config.storage.read("shape.selector") : "Circle");
       config.draw.brushing.selector.setAttribute("selected", config.storage.read("brushing.selector") !== undefined ? config.storage.read("brushing.selector") : "Pencil");
       /*  */
@@ -270,9 +271,6 @@ var config  = {
           saved = null;
         }
         const savedCanvas = saved && saved.version === 2 && saved.canvas ? saved.canvas : saved;
-        if (saved && saved.version === 2 && config.port.name === "page") {
-          config.draw.anchor.enabled = saved.anchor === true;
-        }
         if (savedCanvas) {
           const loaded = config.draw.canvas.loadFromJSON(savedCanvas);
           Promise.resolve(loaded).then(function () {

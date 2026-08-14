@@ -26,6 +26,8 @@ result.
 In page mode, use the anchor button when annotations should remain attached to
 the document instead of the viewport. This is especially useful for PDFs,
 quizzes, and long step-by-step procedures.
+The anchor is disabled for new users and its preference is remembered after
+you change it.
 
 When the anchor is enabled, mouse-wheel scrolling is forwarded to the host page
 and the drawings follow their document positions. To work with form controls,
