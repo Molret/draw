@@ -106,8 +106,14 @@ if (!background) {
 
   window.addEventListener("message", function (event) {
     const data = event && event.data;
-    if (!config.iframe || event.source !== config.iframe.contentWindow || !data || data.source !== "draw-on-page" || data.type !== "scroll") return;
-    window.scrollBy(Number(data.deltaX) || 0, Number(data.deltaY) || 0);
+    if (!config.iframe || event.source !== config.iframe.contentWindow || !data || data.source !== "draw-on-page") return;
+    if (data.type === "close") {
+      config.interface.hide();
+    } else if (data.type === "print") {
+      config.interface.print();
+    } else if (data.type === "scroll") {
+      window.scrollBy(Number(data.deltaX) || 0, Number(data.deltaY) || 0);
+    }
   }, false);
 }
 

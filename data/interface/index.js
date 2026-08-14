@@ -84,7 +84,10 @@ var config  = {
   },
   "print": function () {
     if (config.port.name === "page") {
-      background.send("print");
+      window.parent.postMessage({
+        "source": "draw-on-page",
+        "type": "print"
+      }, "*");
     } else {
       window.print();
     }
@@ -862,7 +865,16 @@ var config  = {
     show.addEventListener("click", function () {config.controls.show()});
     hide.addEventListener("click", function () {config.controls.hide()});
     zoomin.addEventListener("click", function () {config.draw.zoom.in()});
-    close.addEventListener("click", function () {background.send("close")});
+    close.addEventListener("click", function () {
+      if (config.port.name === "page") {
+        window.parent.postMessage({
+          "source": "draw-on-page",
+          "type": "close"
+        }, "*");
+      } else {
+        background.send("close");
+      }
+    });
     zoomout.addEventListener("click", function () {config.draw.zoom.out()});
     png.addEventListener("click", function () {config.draw.convert.to.png()});
     reload.addEventListener("click", function () {document.location.reload()});
