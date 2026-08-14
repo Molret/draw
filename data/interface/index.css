@@ -13,6 +13,10 @@ html[context='page'] body {
   background: transparent !important;
 }
 
+html[context='page'] {
+  color-scheme: light;
+}
+
 body {
   margin: 0;
   border: 0;

@@ -64,6 +64,11 @@ if (!background) {
         config.iframe.style.zIndex = "2147483647";
         config.iframe.style.background = "transparent";
         config.iframe.style.backgroundColor = "transparent";
+        /* Firefox may create an opaque iframe canvas when the embedded
+         * document's color scheme differs from the host element's scheme.
+         * Keep both sides explicitly light so page mode stays composited over
+         * the document instead of becoming a white full-page layer. */
+        config.iframe.style.colorScheme = "light";
         /*  */
         document.documentElement.appendChild(config.iframe);
         /* Keep the extension canvas informed about the host page viewport. The
