@@ -18,7 +18,13 @@
   },
   "web_accessible_resources": [{
     "matches": ["<all_urls>"],
-    "resources": ["data/interface/index.html"]
+    "resources": [
+      "data/interface/index.html",
+      "data/interface/index.css",
+      "data/interface/index.js",
+      "data/interface/vendor/fabric.js",
+      "data/interface/icons/*"
+    ]
   }],
   "permissions": [
     "storage", 
