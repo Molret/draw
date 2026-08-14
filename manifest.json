@@ -2,7 +2,6 @@
   "version": "0.2.0",
   "manifest_version": 3,
   "name": "Draw on Page",
-  "offline_enabled": true,
   "homepage_url": "https://mybrowseraddon.com/draw-on-page.html",
   "description": "Easily draw on any website with simple drawing tools, then print the result.",
   "commands": {
